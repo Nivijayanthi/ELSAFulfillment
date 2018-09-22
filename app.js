@@ -87,7 +87,7 @@ app.post('/fulfillment', async function (req, res) {
         if(requestQuantity > processData.storeQuantity){
             response = "Your request quantity is greater the store availabily.";                        
             response += "<br/> Requested quantity: " + requestQuantity + "<br/>";
-                        response += "Store Availability: " + processData.quantity + "<br/>";
+                        response += "Store Availability: " + processData.storeQuantity + "<br/>";
                         response += "Please try again with correct quantity";
             return res.json({
                 speech: response,
