@@ -22,7 +22,7 @@ app.get("/test", function(req,res){
 });
 
 app.post('/fulfillment', async function (req, res) {
-    console.log("I am inisde fulfillment", JSON.stringify(req.body.result));
+    console.log("I am inisde fulfillment", JSON.stringify(req.body));
     var dialogFlowResponse = {
         speech: "hello",
         messages: []
