@@ -95,12 +95,16 @@ app.post('/fulfillment', async function (req, res) {
             dialogFlowResponse.messages.push(msg);
             return res.json(dialogFlowResponse);
         }else{
-            response = "Are you sure";
-            return res.json({
-                speech: response,
-                displayText: response,
-                source: 'portal',
-            });
+            response = "Please review the details given by you";
+            response += "<br/> Requested Material Code : " +reqMaterialCode ;
+            response += "<br/> Requested Order Number : " + orderNumber;
+            response += "<br/> Requested Quantity : " + requestQuantity;
+            response += "<br/> Store Quantity : " + processData.storeQuantity;
+            response += "<br/> Unit Cost : " + processData.unitCost;
+            msg.payload.facebook.text = response;
+            msg.payload.facebook.quick_replies = template.confirmationQR;
+            dialogFlowResponse.messages.push(msg);
+            return res.json(dialogFlowResponse);
         }
 
 

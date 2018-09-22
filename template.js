@@ -39,3 +39,15 @@ module,exports.cardresponse ={
         "payload": 'Thank you'
     }
 ];
+
+module.exports.confirmationQR =[ {
+    "content_type": "text",
+    "title": 'Proceed',
+    "payload": 'Proceed'
+},
+{
+    "content_type": "text",
+    "title": 'Decline',
+    "payload": 'Thank you'
+}
+];
