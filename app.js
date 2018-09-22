@@ -69,7 +69,7 @@ app.post('/fulfillment', async function (req, res) {
     if (req.body.result.metadata.intentName == 'CREATE-AMRN') {
         var processData;
         console.log("I am inisde ceate", JSON.stringify(req.body.result));
-        var meterialCode = req.body.result.parameters.materialCode;
+        var reqMaterialCode = req.body.result.parameters.materialCode;
         var orderNumber = req.body.result.parameters.orderNumber;
         var requestQuantity = req.body.result.parameters.quantity;
 
@@ -79,7 +79,7 @@ app.post('/fulfillment', async function (req, res) {
         
         DBdata.storeValues.forEach(function (storeValue){
             console.log("Store value...........",storeValue);
-            if(storeValue.materialCode == materialCode){
+            if(storeValue.materialCode == reqMaterialCode){
                 processData = storeValue;
             } 
             console.log("processData", processData);           
