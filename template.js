@@ -31,7 +31,7 @@ module,exports.cardresponse ={
   module.exports.objectArr =[ {
         "content_type": "text",
         "title": 'Edit quantity',
-        "payload": `Create AMRN for ${reqMaterialCode} in order ${orderNumber}`
+        "payload": null
     },
     {
         "content_type": "text",

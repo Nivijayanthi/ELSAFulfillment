@@ -89,6 +89,7 @@ app.post('/fulfillment', async function (req, res) {
             response += "<br/> Requested quantity: " + requestQuantity + "<br/>";
                         response += "Store Availability: " + processData.storeQuantity + "<br/>";
                         response += "Please try again with correct quantity";
+            template.objectArr[0].payload = `Create AMRN for ${reqMaterialCode} in order ${orderNumber}`;
             msg.payload.facebook.text = response;
             msg.payload.facebook.quick_replies = template.objectArr;
             dialogFlowResponse.messages.push(msg);
