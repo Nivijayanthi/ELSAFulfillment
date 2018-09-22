@@ -73,7 +73,7 @@ app.post('/fulfillment', async function (req, res) {
         var orderNumber = req.body.result.parameters.orderNumber;
         var requestQuantity = req.body.result.parameters.quantity;
 
-        console.log("meterialCode", meterialCode);
+        console.log("meterialCode", reqMaterialCode);
         console.log("orderNumber", orderNumber);
         console.log("requestQuantity", requestQuantity);
         
