@@ -89,11 +89,10 @@ app.post('/fulfillment', async function (req, res) {
             response += "<br/> Requested quantity: " + requestQuantity + "<br/>";
                         response += "Store Availability: " + processData.storeQuantity + "<br/>";
                         response += "Please try again with correct quantity";
-            return res.json({
-                speech: response,
-                displayText: response,
-                source: 'portal',
-            });
+            msg.payload.facebook.text = response;
+            msg.payload.facebook.quick_replies = template.objectArr;
+            dialogFlowResponse.messages.push(msg);
+            return res.json(dialogFlowResponse);
         }else{
             response = "Are you sure";
             return res.json({
