@@ -26,7 +26,7 @@ app.post('/fulfillment', async function (req, res) {
     var DBdata ={
         name : 'ELSA',
         version : '1.0',
-        storeValues =[
+        storeValues :[
         {
             materialCode : '1H3456786',
             orderNumber : '234567',
