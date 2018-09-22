@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
 //imports
-// const template = require('./template');
+const template = require('./template');
 var http = require("http");
 var datetime = new Date();
 console.log("datetime", datetime);
@@ -23,6 +23,30 @@ app.get("/test", function(req,res){
 
 app.post('/fulfillment', async function (req, res) {
     console.log("I am inisde fulfillment", JSON.stringify(req.body));
+    var DBdata ={
+        name : 'ELSA',
+        version : '1.0',
+        storeValues =[
+        {
+            materialCode : '1H3456786',
+            orderNumber : '234567',
+            storeQuantity : '216.0',
+            unitCost : '6.72'
+        },
+        {
+            materialCode : '1H3456978',
+            orderNumber : '345672',
+            storeQuantity : '34.0',
+            unitCost : '1.72'
+        },
+        {
+            materialCode : '1H3456423',
+            orderNumber : '456723',
+            storeQuantity : '2.78',
+            unitCost : '2.72'
+        }
+    ]
+    };
     var dialogFlowResponse = {
         speech: "hello",
         messages: []
@@ -43,18 +67,46 @@ app.post('/fulfillment', async function (req, res) {
     let listOfFunds = [];
 
     if (req.body.result.metadata.intentName == 'CREATE-AMRN') {
+        var processData;
         console.log("I am inisde ceate", JSON.stringify(req.body.result));
-        var currentProfile;
-        var targetProfile;
-        //var clientId = 'C10112';
+        var meterialCode = req.body.result.parameters.materialCode;
+        var orderNumber = req.body.result.parameters.orderNumber;
+        var requestQuantity = req.body.result.parameters.quantity;
+
+        console.log("meterialCode", meterialCode);
+        console.log("orderNumber", orderNumber);
+        console.log("requestQuantity", requestQuantity);
+        
+        DBdata.storeValues.forEach(function (storeValue){
+            console.log("Store value...........",storeValue);
+            if(storeValue.materialCode == materialCode){
+                processData = storeValue;
+            } 
+            console.log("processData", processData);           
+        });
+        if(requestQuantity > processData.storeQuantity){
+            response = "Your request quantity is greater the store availabily.";                        
+            response += "<br/> Requested quantity: " + requestQuantity + "<br/>";
+                        response += "Store Availability: " + processData.quantity + "<br/>";
+                        response += "Please try again with correct quantity";
+            return res.json({
+                speech: response,
+                displayText: response,
+                source: 'portal',
+            });
+        }else{
+            response = "Are you sure";
+            return res.json({
+                speech: response,
+                displayText: response,
+                source: 'portal',
+            });
+        }
+
+
        
      
-                response = "Sorry!!There are no funds available under the new risk category";
-                return res.json({
-                    speech: response,
-                    displayText: response,
-                    source: 'portal',
-                });
+               
 
             }
         //     if (req.body.result.metadata.intentName == 'CHANGE-RISK-PROFILE-TARGET') {
