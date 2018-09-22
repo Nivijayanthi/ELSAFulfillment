@@ -84,7 +84,7 @@ app.post('/fulfillment', async function (req, res) {
             } 
             console.log("processData", processData);           
         });
-        if(requestQuantity > processData.storeQuantity){
+        if(requestQuantity.toFixed(2) > processData.storeQuantity.toFixed(2)){
             response = "Your request quantity is greater the store availabily.";                        
             response += "<br/> Requested quantity: " + requestQuantity + "<br/>";
                         response += "Store Availability: " + processData.storeQuantity + "<br/>";
