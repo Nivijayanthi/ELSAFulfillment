@@ -69,7 +69,7 @@ module.exports.carouselObject = function()  {
   "platform": "facebook",
   "title": null,
   "subtitle": null,
-  "imageUrl": null,
+  //"imageUrl": null,
   "buttons": []
 };
 return carouselObject;
