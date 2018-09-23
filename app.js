@@ -59,14 +59,7 @@ app.post('/fulfillment', async function (req, res) {
     //     "displayText": "",
     //     "messages": []       
     //     };
-    var carouselObject =   {
-        "type": 1,
-        "platform": "facebook",
-        "title": null,
-        "subtitle": null,
-        "imageUrl": null,
-        "buttons": []
-      };
+    
     var dialogFlowResponse = {
         speech: "hello",
         messages: []
@@ -130,7 +123,8 @@ app.post('/fulfillment', async function (req, res) {
 
     if (req.body.result.metadata.intentName == 'GET-AMRN') {
         DBdata.storeValues.forEach(function (storeValue) {
-            console.log("")
+            console.log("storeValue",JSON.stringify(storeValue));
+            var carouselObject = new template.carouselObject;
             if (storeValue.approval == 'Pending') {
                 response1 = "Please review the details and do action";
                 response = " Requested Material Code : " + reqMaterialCode ;
@@ -141,10 +135,11 @@ app.post('/fulfillment', async function (req, res) {
                 response += " Total Cost : " + storeValue.unitCost * requestQuantity
                 carouselObject.title = response1;
                 carouselObject.subtitle = response;
-                carouselObject.buttons = template.approveButtons;
-                dialogFlowResponse.messages.push(carouselObject);
+                carouselObject.buttons = template.approveButtons;                
             }
+            msgList.push(carouselObject);
         });
+        dialogFlowResponse.messages = msgList;
         return res.json(dialogFlowResponse);
     }
     //     if (req.body.result.metadata.intentName == 'CHANGE-RISK-PROFILE-TARGET') {

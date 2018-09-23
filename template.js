@@ -62,3 +62,15 @@ module.exports.approveButtons =[
   "postback": 'Decline'
 }
 ];
+
+module.exports.carouselObject = function()  {
+  var carouselObject = {
+  "type": 1,
+  "platform": "facebook",
+  "title": null,
+  "subtitle": null,
+  "imageUrl": null,
+  "buttons": []
+};
+return carouselObject;
+};
