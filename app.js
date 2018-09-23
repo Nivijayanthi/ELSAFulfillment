@@ -134,11 +134,11 @@ app.post('/fulfillment', async function (req, res) {
             if (storeValue.approval == 'Pending') {
                 response1 = "Please review the details and do action";
                 response = " Requested Material Code : " + reqMaterialCode ;
-                response += "<br/> Requested Order Number : " + orderNumber 
-                response += "<br/> Requested Quantity : " + requestQuantity;
-                response += "<br/> Store Quantity : " + storeValue.storeQuantity;
-                response += "<br/> Unit Cost : " + storeValue.unitCost;
-                response += "<br/> Total Cost : " + storeValue.unitCost * requestQuantity
+                response += "Requested Order Number : " + orderNumber 
+                response += " Requested Quantity : " + requestQuantity;
+                response += " Store Quantity : " + storeValue.storeQuantity;
+                response += " Unit Cost : " + storeValue.unitCost;
+                response += " Total Cost : " + storeValue.unitCost * requestQuantity
                 carouselObject.title = response1;
                 carouselObject.subtitle = response;
                 carouselObject.buttons = template.approveButtons;
