@@ -69,7 +69,7 @@ module.exports.carouselObject = function()  {
   "platform": "facebook",
   "title": null,
   "subtitle": null,
-  //"imageUrl": null,
+  "imageUrl": "https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/0002/5544/brand.gif?itok=OgjKwME0",
   "buttons": []
 };
 return carouselObject;
