@@ -135,7 +135,7 @@ app.post('/fulfillment', async function (req, res) {
                 response1 = "Please review the details and do action";
                 response = " Requested Material Code : " + reqMaterialCode ;
                 response += "Requested Order Number : " + orderNumber 
-                response += " Requested Quantity : " + requestQuantity;
+                response += "Requested Quantity : " + requestQuantity;
                 response += " Store Quantity : " + storeValue.storeQuantity;
                 response += " Unit Cost : " + storeValue.unitCost;
                 response += " Total Cost : " + storeValue.unitCost * requestQuantity

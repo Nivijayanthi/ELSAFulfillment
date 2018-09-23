@@ -52,14 +52,13 @@ module.exports.confirmationQR =[ {
 }
 ];
 
-module.exports.approveButtons =[ {
-  "content_type": "text",
-  "title": 'Approve',
-  "payload": 'Approve'
+module.exports.approveButtons =[ 
+  {
+  "text": 'Approve',
+  "postback": 'Approve'
 },
 {
-  "content_type": "text",
-  "title": 'Decline',
-  "payload": 'Decline'
+  "text": 'Decline',
+  "postback": 'Decline'
 }
 ];
