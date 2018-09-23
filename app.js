@@ -43,14 +43,14 @@ app.post('/fulfillment', async function (req, res) {
                 orderNumber: '345672',
                 storeQuantity: '34.0',
                 unitCost: '1.72',
-                approval: null
+                approval: 'Pending'
             },
             {
                 materialCode: '1H3456423',
                 orderNumber: '456723',
                 storeQuantity: '2.78',
                 unitCost: '2.72',
-                approval: 'Approved'
+                approval: 'Pending'
             }
         ]
     };
