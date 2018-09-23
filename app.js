@@ -130,14 +130,15 @@ app.post('/fulfillment', async function (req, res) {
 
     if (req.body.result.metadata.intentName == 'GET-AMRN') {
         DBdata.storeValues.forEach(function (storeValue) {
+            console.log("")
             if (storeValue.approval == 'Pending') {
                 response1 = "Please review the details and do action";
                 response = "<br/> Requested Material Code : " + reqMaterialCode;
                 response += "<br/> Requested Order Number  : " + orderNumber;
                 response += "<br/> Requested Quantity      : " + requestQuantity;
-                response += "<br/> Store Quantity          : " + processData.storeQuantity;
-                response += "<br/> Unit Cost               : " + processData.unitCost;
-                response += "<br/> Total Cost              : " + processData.unitCost * requestQuantity
+                response += "<br/> Store Quantity          : " + storeValue.storeQuantity;
+                response += "<br/> Unit Cost               : " + storeValue.unitCost;
+                response += "<br/> Total Cost              : " + storeValue.unitCost * requestQuantity
                 carouselObject.title = response1;
                 carouselObject.subtitle = response;
                 carouselObject.buttons = template.approveButtons;
